@@ -21,8 +21,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
       - run: npm run build:site
+        env:
+          AGENT_LOOP_KIT_PUBLIC_URL: https://palette-lab.github.io/agent-loop-kit
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

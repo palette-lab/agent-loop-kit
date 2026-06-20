@@ -46,8 +46,9 @@
     "test": "node --test",
     "validate": "node bin/agent-loop-kit.mjs validate",
     "build:site": "node scripts/build-site.mjs dist",
+    "package:skill": "node scripts/package-skill.mjs dist/loopwright-skill.zip",
     "export:agents": "node bin/agent-loop-kit.mjs export-agents-md --out AGENTS.generated.md",
-    "prepare:release": "npm run validate && npm test && npm run build:site"
+    "prepare:release": "npm run validate && npm test && npm run build:site && npm run package:skill"
   },
   "engines": {
     "node": ">=20"

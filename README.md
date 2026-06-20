@@ -131,6 +131,16 @@ npm test
 
 A good loop should be practical, bounded, safe, and evidence-driven. It should not say "keep improving" without a stop condition. It should not allow irreversible actions without human approval.
 
+## Skill package
+
+The Loopwright skill source lives in `skills/loopwright/`. Build the distributable ZIP with:
+
+```bash
+npm run package:skill
+```
+
+The ZIP is written to `dist/loopwright-skill.zip` and is rebuilt by `npm run prepare:release`.
+
 ## Repository layout
 
 ```text

@@ -26,6 +26,24 @@ git push -u origin main
 
 The `pages.yml` workflow builds `dist/` and deploys it. In repository settings, set Pages source to GitHub Actions.
 
+If the workflow fails with `HttpError: Not Found` during `actions/deploy-pages`, Pages has not been enabled for the repository yet. Open:
+
+```text
+https://github.com/palette-lab/agent-loop-kit/settings/pages
+```
+
+Then set Build and deployment -> Source to GitHub Actions and rerun the `pages` workflow.
+
+## Package the Loopwright skill
+
+The skill source of truth is `skills/loopwright/`. Build the release ZIP from source:
+
+```bash
+npm run package:skill
+```
+
+This writes `dist/loopwright-skill.zip`.
+
 ## Publish to npm later
 
 ```bash
