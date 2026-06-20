@@ -31,9 +31,13 @@ test('buildCatalog emits ARD ai-catalog manifest and loop markdown', () => {
   assert.ok(result.count >= 40);
   assert.ok(existsSync(join(out, '.well-known', 'ai-catalog.json')));
   assert.ok(existsSync(join(out, 'loops', 'completion-contract.md')));
+  assert.ok(existsSync(join(out, 'assets', 'hero-contracts.svg')));
   const catalog = JSON.parse(readFileSync(join(out, '.well-known', 'ai-catalog.json'), 'utf8'));
   assert.equal(catalog.specVersion, '1.0');
   assert.ok(catalog.entries.some((entry) => entry.identifier.includes(':loop:completion-contract')));
+  const html = readFileSync(join(out, 'index.html'), 'utf8');
+  assert.match(html, /data-set-lang="ko"/);
+  assert.match(html, /증거 없는 에이전트/);
 });
 
 test('exportInstructions writes target-specific files', () => {
