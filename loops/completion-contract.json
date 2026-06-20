@@ -1,0 +1,68 @@
+{
+  "id": "completion-contract",
+  "title": "Completion Contract Loop",
+  "category": "agent",
+  "summary": "Prevents agents from presenting partial progress as done by tracking required outcomes and evidence.",
+  "tags": [
+    "agents",
+    "completion",
+    "verification"
+  ],
+  "useCases": [
+    "long-running coding tasks",
+    "autonomous PRs",
+    "deployment workflows"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "goal",
+    "required_outcomes",
+    "evidence_policy"
+  ],
+  "steps": [
+    "Before acting, turn the goal into a numbered contract of required outcomes and acceptable evidence for each.",
+    "After every bounded action, mark each requirement as proved, weak, missing, contradicted, or blocked.",
+    "Do not declare completion while any requirement is weak, missing, contradicted, or blocked.",
+    "When progress stalls, return the contract table with the next owner and smallest unblock action.",
+    "Only complete when every requirement is proved by evidence gathered in the current run or trusted artifacts."
+  ],
+  "checks": [
+    "contract exists before work",
+    "requirements map to evidence",
+    "status updated after actions",
+    "completion only when all proved"
+  ],
+  "stopConditions": [
+    "all requirements proved",
+    "blocked owner needed",
+    "budget exhausted with contract preserved"
+  ],
+  "evidence": [
+    "requirement-to-evidence table",
+    "action log",
+    "blocked items",
+    "final status"
+  ],
+  "humanApproval": [
+    "changing required outcomes",
+    "accepting weak evidence as done"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Completion Contract Loop for [goal, required_outcomes, evidence_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Before acting, turn the goal into a numbered contract of required outcomes and acceptable evidence for each.\n- After every bounded action, mark each requirement as proved, weak, missing, contradicted, or blocked.\n- Do not declare completion while any requirement is weak, missing, contradicted, or blocked.\n- When progress stalls, return the contract table with the next owner and smallest unblock action.\n- Only complete when every requirement is proved by evidence gathered in the current run or trusted artifacts.\n\nQuality gates before completion:\n- contract exists before work\n- requirements map to evidence\n- status updated after actions\n- completion only when all proved\n\nStop when one of these is true:\n- all requirements proved\n- blocked owner needed\n- budget exhausted with contract preserved\n\nFinish with:\n- requirement-to-evidence table\n- action log\n- blocked items\n- final status\n\nEscalate for human approval before: changing required outcomes, accepting weak evidence as done."
+}

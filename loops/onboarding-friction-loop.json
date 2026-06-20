@@ -1,0 +1,69 @@
+{
+  "id": "onboarding-friction-loop",
+  "title": "Onboarding Friction Loop",
+  "category": "product",
+  "summary": "Finds and removes the highest-friction step in a new-user onboarding journey.",
+  "tags": [
+    "product",
+    "onboarding",
+    "activation"
+  ],
+  "useCases": [
+    "SaaS onboarding",
+    "developer quickstarts",
+    "trial activation"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "journey",
+    "activation_event",
+    "evidence_sources"
+  ],
+  "steps": [
+    "Define the activation event and map every step a new user must complete to reach it.",
+    "Use analytics, session evidence, support tickets, and fresh-user walkthroughs to identify the biggest drop-off or confusion point.",
+    "Fix one friction point with the smallest testable product, copy, docs, or defaults change.",
+    "Measure the same activation and qualitative signals after the change.",
+    "Repeat only if the next friction point is clearly higher impact than polishing the last one."
+  ],
+  "checks": [
+    "activation event defined",
+    "friction point supported by evidence",
+    "one change tested",
+    "same metric measured after"
+  ],
+  "stopConditions": [
+    "activation target reached",
+    "data is insufficient",
+    "next fix needs product approval"
+  ],
+  "evidence": [
+    "journey map",
+    "friction evidence",
+    "change summary",
+    "before-after metric"
+  ],
+  "humanApproval": [
+    "changing pricing gates",
+    "collecting new user data",
+    "altering legal consent flows"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Onboarding Friction Loop for [journey, activation_event, evidence_sources].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Define the activation event and map every step a new user must complete to reach it.\n- Use analytics, session evidence, support tickets, and fresh-user walkthroughs to identify the biggest drop-off or confusion point.\n- Fix one friction point with the smallest testable product, copy, docs, or defaults change.\n- Measure the same activation and qualitative signals after the change.\n- Repeat only if the next friction point is clearly higher impact than polishing the last one.\n\nQuality gates before completion:\n- activation event defined\n- friction point supported by evidence\n- one change tested\n- same metric measured after\n\nStop when one of these is true:\n- activation target reached\n- data is insufficient\n- next fix needs product approval\n\nFinish with:\n- journey map\n- friction evidence\n- change summary\n- before-after metric\n\nEscalate for human approval before: changing pricing gates, collecting new user data, altering legal consent flows."
+}

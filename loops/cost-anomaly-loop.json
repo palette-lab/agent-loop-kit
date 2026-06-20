@@ -1,0 +1,69 @@
+{
+  "id": "cost-anomaly-loop",
+  "title": "Cost Anomaly Loop",
+  "category": "operations",
+  "summary": "Investigates cloud, API, or model cost spikes and adds controls that prevent recurrence.",
+  "tags": [
+    "cost",
+    "finops",
+    "monitoring"
+  ],
+  "useCases": [
+    "cloud cost spike",
+    "LLM token burn",
+    "CI minutes overrun"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "cost_surface",
+    "lookback_window",
+    "threshold"
+  ],
+  "steps": [
+    "Break the anomaly down by service, owner, deployment, region, model, job, or endpoint until a driver is visible.",
+    "Compare the driver to usage, release, incident, and traffic timelines.",
+    "Apply the smallest safe reduction such as quota, cache, batching, timeout, retention, or right-sizing.",
+    "Verify that quality and reliability did not regress after the reduction.",
+    "Add budget alerts or guardrails that fire before the next spike grows."
+  ],
+  "checks": [
+    "cost driver identified",
+    "owner mapped",
+    "reduction verified",
+    "quality guard passes",
+    "alert or quota added"
+  ],
+  "stopConditions": [
+    "cost back within threshold with guardrail",
+    "business-approved usage explains spike",
+    "access missing"
+  ],
+  "evidence": [
+    "cost breakdown",
+    "timeline correlation",
+    "change diff",
+    "before-after spend estimate"
+  ],
+  "humanApproval": [
+    "reducing customer-facing capacity",
+    "changing pricing or billing behavior"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Cost Anomaly Loop for [cost_surface, lookback_window, threshold].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Break the anomaly down by service, owner, deployment, region, model, job, or endpoint until a driver is visible.\n- Compare the driver to usage, release, incident, and traffic timelines.\n- Apply the smallest safe reduction such as quota, cache, batching, timeout, retention, or right-sizing.\n- Verify that quality and reliability did not regress after the reduction.\n- Add budget alerts or guardrails that fire before the next spike grows.\n\nQuality gates before completion:\n- cost driver identified\n- owner mapped\n- reduction verified\n- quality guard passes\n- alert or quota added\n\nStop when one of these is true:\n- cost back within threshold with guardrail\n- business-approved usage explains spike\n- access missing\n\nFinish with:\n- cost breakdown\n- timeline correlation\n- change diff\n- before-after spend estimate\n\nEscalate for human approval before: reducing customer-facing capacity, changing pricing or billing behavior."
+}

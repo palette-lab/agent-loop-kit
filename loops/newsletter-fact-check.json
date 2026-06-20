@@ -1,0 +1,70 @@
+{
+  "id": "newsletter-fact-check",
+  "title": "Newsletter Fact Check Loop",
+  "category": "content",
+  "summary": "Checks a newsletter draft for factual accuracy, source quality, and misleading framing before publication.",
+  "tags": [
+    "fact-check",
+    "newsletter",
+    "editorial"
+  ],
+  "useCases": [
+    "AI newsletters",
+    "company updates",
+    "research roundups"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "draft",
+    "audience",
+    "source_policy"
+  ],
+  "steps": [
+    "Extract every factual claim, quote, date, number, comparison, and implied recommendation from the draft.",
+    "Verify claims against primary or reputable sources and record source dates.",
+    "Flag claims that are unsupported, outdated, overstated, or too broad for the evidence.",
+    "Rewrite risky sections to be precise, attributed, and appropriately uncertain.",
+    "Run a final pass for headline accuracy and mismatch between evidence and emotional framing."
+  ],
+  "checks": [
+    "claim inventory complete",
+    "numbers and dates verified",
+    "quotes checked",
+    "headline matches evidence",
+    "uncertainty preserved"
+  ],
+  "stopConditions": [
+    "draft is publication-safe",
+    "critical claim cannot be verified",
+    "legal or policy review needed"
+  ],
+  "evidence": [
+    "claim table",
+    "source list",
+    "redline summary",
+    "remaining risks"
+  ],
+  "humanApproval": [
+    "publishing",
+    "using anonymous sources",
+    "controversial allegations"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Newsletter Fact Check Loop for [draft, audience, source_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Extract every factual claim, quote, date, number, comparison, and implied recommendation from the draft.\n- Verify claims against primary or reputable sources and record source dates.\n- Flag claims that are unsupported, outdated, overstated, or too broad for the evidence.\n- Rewrite risky sections to be precise, attributed, and appropriately uncertain.\n- Run a final pass for headline accuracy and mismatch between evidence and emotional framing.\n\nQuality gates before completion:\n- claim inventory complete\n- numbers and dates verified\n- quotes checked\n- headline matches evidence\n- uncertainty preserved\n\nStop when one of these is true:\n- draft is publication-safe\n- critical claim cannot be verified\n- legal or policy review needed\n\nFinish with:\n- claim table\n- source list\n- redline summary\n- remaining risks\n\nEscalate for human approval before: publishing, using anonymous sources, controversial allegations."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "accessibility-first-ui",
+  "title": "Accessibility First UI Loop",
+  "category": "design",
+  "summary": "Improves UI through accessibility checks before visual polish is considered complete.",
+  "tags": [
+    "accessibility",
+    "frontend",
+    "design"
+  ],
+  "useCases": [
+    "component libraries",
+    "forms",
+    "landing pages"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "ui_scope",
+    "user_tasks",
+    "accessibility_standard"
+  ],
+  "steps": [
+    "List core user tasks and the elements required to complete them with keyboard, screen reader, and pointer.",
+    "Audit semantics, focus order, labels, contrast, target size, errors, and responsive behavior.",
+    "Fix the most blocking accessibility issue first, then verify it with automated and manual checks.",
+    "Repeat until no task-blocking accessibility issue remains in scope.",
+    "Document any remaining non-blocking issues and owners."
+  ],
+  "checks": [
+    "keyboard path works",
+    "labels and roles are meaningful",
+    "focus is visible",
+    "contrast acceptable",
+    "errors are announced"
+  ],
+  "stopConditions": [
+    "core tasks pass accessibility gates",
+    "design decision blocks fix",
+    "budget ends"
+  ],
+  "evidence": [
+    "audit findings",
+    "before-after screenshots",
+    "manual test notes",
+    "automated check output"
+  ],
+  "humanApproval": [
+    "shipping with task-blocking accessibility issue",
+    "changing design system tokens"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity",
+    "google-stitch"
+  ],
+  "prompt": "Use the Accessibility First UI Loop for [ui_scope, user_tasks, accessibility_standard].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- List core user tasks and the elements required to complete them with keyboard, screen reader, and pointer.\n- Audit semantics, focus order, labels, contrast, target size, errors, and responsive behavior.\n- Fix the most blocking accessibility issue first, then verify it with automated and manual checks.\n- Repeat until no task-blocking accessibility issue remains in scope.\n- Document any remaining non-blocking issues and owners.\n\nQuality gates before completion:\n- keyboard path works\n- labels and roles are meaningful\n- focus is visible\n- contrast acceptable\n- errors are announced\n\nStop when one of these is true:\n- core tasks pass accessibility gates\n- design decision blocks fix\n- budget ends\n\nFinish with:\n- audit findings\n- before-after screenshots\n- manual test notes\n- automated check output\n\nEscalate for human approval before: shipping with task-blocking accessibility issue, changing design system tokens."
+}

@@ -1,0 +1,68 @@
+{
+  "id": "regression-streak",
+  "title": "Regression Streak Loop",
+  "category": "evaluation",
+  "summary": "Builds confidence by requiring a clean streak of realistic cases and restarting on failure.",
+  "tags": [
+    "quality",
+    "testing",
+    "streak"
+  ],
+  "useCases": [
+    "release confidence",
+    "agent reliability checks",
+    "manual QA"
+  ],
+  "riskLevel": "low",
+  "inputs": [
+    "cases",
+    "streak_length",
+    "failure_policy"
+  ],
+  "steps": [
+    "Define realistic cases and a target streak length before starting.",
+    "Run cases one at a time under consistent conditions and record pass or fail with evidence.",
+    "When a case fails, document it, add regression coverage where practical, fix the root cause, and reset the streak.",
+    "Do not skip difficult cases to preserve the streak.",
+    "After reaching the streak, rerun the highest-risk failures from the log."
+  ],
+  "checks": [
+    "streak target fixed",
+    "failures reset streak",
+    "regressions added for fixed failures",
+    "evidence recorded"
+  ],
+  "stopConditions": [
+    "target streak achieved and spot checks pass",
+    "failure pattern requires redesign",
+    "budget ends"
+  ],
+  "evidence": [
+    "case log",
+    "failure notes",
+    "regression tests",
+    "final streak count"
+  ],
+  "humanApproval": [
+    "accepting failed high-risk cases",
+    "changing streak length mid-run"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Regression Streak Loop for [cases, streak_length, failure_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Define realistic cases and a target streak length before starting.\n- Run cases one at a time under consistent conditions and record pass or fail with evidence.\n- When a case fails, document it, add regression coverage where practical, fix the root cause, and reset the streak.\n- Do not skip difficult cases to preserve the streak.\n- After reaching the streak, rerun the highest-risk failures from the log.\n\nQuality gates before completion:\n- streak target fixed\n- failures reset streak\n- regressions added for fixed failures\n- evidence recorded\n\nStop when one of these is true:\n- target streak achieved and spot checks pass\n- failure pattern requires redesign\n- budget ends\n\nFinish with:\n- case log\n- failure notes\n- regression tests\n- final streak count\n\nEscalate for human approval before: accepting failed high-risk cases, changing streak length mid-run."
+}

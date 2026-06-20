@@ -1,0 +1,5 @@
+interface:
+  display_name: Loopwright
+  short_description: Design safe, bounded agent loops with checks and evidence.
+  icon: circle
+  brand_color: "#3B82F6"

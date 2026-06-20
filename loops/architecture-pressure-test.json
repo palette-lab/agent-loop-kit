@@ -1,0 +1,69 @@
+{
+  "id": "architecture-pressure-test",
+  "title": "Architecture Pressure Test Loop",
+  "category": "engineering",
+  "summary": "Stress-tests a proposed architecture against change scenarios before implementation locks in.",
+  "tags": [
+    "architecture",
+    "design-review",
+    "tradeoffs"
+  ],
+  "useCases": [
+    "new service design",
+    "large refactor planning",
+    "platform decisions"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "proposal",
+    "scenarios",
+    "constraints"
+  ],
+  "steps": [
+    "State the architecture, non-goals, constraints, and assumptions in a decision record.",
+    "Create realistic pressure scenarios for scale, failure, security, migration, operability, and team ownership.",
+    "For each scenario, trace how the design changes, fails, or recovers.",
+    "Have a critic list the highest-impact objections and require evidence for each response.",
+    "Revise the architecture or explicitly accept tradeoffs with owners and review dates."
+  ],
+  "checks": [
+    "decision record exists",
+    "major quality attributes are exercised",
+    "objections are resolved or accepted",
+    "migration and rollback paths are described"
+  ],
+  "stopConditions": [
+    "no unresolved high-impact objection remains",
+    "decision owner accepts documented risk",
+    "same objections repeat without new evidence"
+  ],
+  "evidence": [
+    "decision record",
+    "scenario table",
+    "objection log",
+    "final recommendation"
+  ],
+  "humanApproval": [
+    "irreversible platform commitment",
+    "security boundary changes",
+    "major cost increase"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Architecture Pressure Test Loop for [proposal, scenarios, constraints].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- State the architecture, non-goals, constraints, and assumptions in a decision record.\n- Create realistic pressure scenarios for scale, failure, security, migration, operability, and team ownership.\n- For each scenario, trace how the design changes, fails, or recovers.\n- Have a critic list the highest-impact objections and require evidence for each response.\n- Revise the architecture or explicitly accept tradeoffs with owners and review dates.\n\nQuality gates before completion:\n- decision record exists\n- major quality attributes are exercised\n- objections are resolved or accepted\n- migration and rollback paths are described\n\nStop when one of these is true:\n- no unresolved high-impact objection remains\n- decision owner accepts documented risk\n- same objections repeat without new evidence\n\nFinish with:\n- decision record\n- scenario table\n- objection log\n- final recommendation\n\nEscalate for human approval before: irreversible platform commitment, security boundary changes, major cost increase."
+}

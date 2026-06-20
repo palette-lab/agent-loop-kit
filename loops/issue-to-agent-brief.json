@@ -1,0 +1,68 @@
+{
+  "id": "issue-to-agent-brief",
+  "title": "Issue to Agent Brief Loop",
+  "category": "agent",
+  "summary": "Converts vague issues into high-signal briefs that cloud or IDE coding agents can execute safely.",
+  "tags": [
+    "agents",
+    "github-issues",
+    "brief"
+  ],
+  "useCases": [
+    "assigning issues to Copilot or Codex",
+    "open source contributor support",
+    "agent task planning"
+  ],
+  "riskLevel": "low",
+  "inputs": [
+    "issue",
+    "repo_context",
+    "agent_constraints"
+  ],
+  "steps": [
+    "Extract the user goal, current behavior, expected behavior, constraints, and non-goals from the issue.",
+    "Add repository-specific setup, test commands, relevant files, and known hazards.",
+    "Define the completion contract, evidence requirements, and escalation triggers.",
+    "Remove ambiguity that would cause broad refactors or unrelated product decisions.",
+    "Post the brief as the task prompt only when it is bounded enough for the agent runtime."
+  ],
+  "checks": [
+    "goal is observable",
+    "non-goals stated",
+    "relevant commands included",
+    "completion evidence defined",
+    "escalation triggers clear"
+  ],
+  "stopConditions": [
+    "brief is ready to assign",
+    "product decision needed",
+    "issue lacks enough reproduction detail"
+  ],
+  "evidence": [
+    "agent brief",
+    "source issue links",
+    "completion contract"
+  ],
+  "humanApproval": [
+    "assigning broad product work",
+    "granting write access"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Issue to Agent Brief Loop for [issue, repo_context, agent_constraints].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Extract the user goal, current behavior, expected behavior, constraints, and non-goals from the issue.\n- Add repository-specific setup, test commands, relevant files, and known hazards.\n- Define the completion contract, evidence requirements, and escalation triggers.\n- Remove ambiguity that would cause broad refactors or unrelated product decisions.\n- Post the brief as the task prompt only when it is bounded enough for the agent runtime.\n\nQuality gates before completion:\n- goal is observable\n- non-goals stated\n- relevant commands included\n- completion evidence defined\n- escalation triggers clear\n\nStop when one of these is true:\n- brief is ready to assign\n- product decision needed\n- issue lacks enough reproduction detail\n\nFinish with:\n- agent brief\n- source issue links\n- completion contract\n\nEscalate for human approval before: assigning broad product work, granting write access."
+}

@@ -1,0 +1,72 @@
+{
+  "id": "data-cleanup-with-audit",
+  "title": "Data Cleanup With Audit Loop",
+  "category": "operations",
+  "summary": "Cleans production-like data only after defining allowed records, audit logs, and rollback safeguards.",
+  "tags": [
+    "data",
+    "cleanup",
+    "audit",
+    "operations"
+  ],
+  "useCases": [
+    "duplicate cleanup",
+    "bad import repair",
+    "CRM hygiene"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "dataset",
+    "allowed_definition",
+    "dry_run_query"
+  ],
+  "steps": [
+    "Write the allowed-record definition and owner approval before touching mutable data.",
+    "Run a dry-run classification and sample both records to keep and records to change.",
+    "Fix the classification logic until samples match the definition and edge cases are documented.",
+    "Execute changes in batches with an audit trail, backup, and rollback procedure.",
+    "Verify remaining data and update prevention logic so the problem does not recur."
+  ],
+  "checks": [
+    "definition approved",
+    "dry-run reviewed",
+    "backup or rollback exists",
+    "batch audit captured",
+    "post-cleanup verification passes"
+  ],
+  "stopConditions": [
+    "cleanup complete and prevention in place",
+    "sample review shows ambiguous records",
+    "approval missing"
+  ],
+  "evidence": [
+    "definition",
+    "dry-run counts",
+    "sample review",
+    "audit log",
+    "verification query"
+  ],
+  "humanApproval": [
+    "deleting data",
+    "modifying customer records",
+    "changing compliance-retained records"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Data Cleanup With Audit Loop for [dataset, allowed_definition, dry_run_query].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Write the allowed-record definition and owner approval before touching mutable data.\n- Run a dry-run classification and sample both records to keep and records to change.\n- Fix the classification logic until samples match the definition and edge cases are documented.\n- Execute changes in batches with an audit trail, backup, and rollback procedure.\n- Verify remaining data and update prevention logic so the problem does not recur.\n\nQuality gates before completion:\n- definition approved\n- dry-run reviewed\n- backup or rollback exists\n- batch audit captured\n- post-cleanup verification passes\n\nStop when one of these is true:\n- cleanup complete and prevention in place\n- sample review shows ambiguous records\n- approval missing\n\nFinish with:\n- definition\n- dry-run counts\n- sample review\n- audit log\n- verification query\n\nEscalate for human approval before: deleting data, modifying customer records, changing compliance-retained records."
+}

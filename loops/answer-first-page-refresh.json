@@ -1,0 +1,70 @@
+{
+  "id": "answer-first-page-refresh",
+  "title": "Answer First Page Refresh Loop",
+  "category": "content",
+  "summary": "Refreshes pages so humans and AI answer engines can extract clear, cited, current answers.",
+  "tags": [
+    "seo",
+    "geo",
+    "content",
+    "docs"
+  ],
+  "useCases": [
+    "documentation pages",
+    "landing pages",
+    "knowledge base updates"
+  ],
+  "riskLevel": "low",
+  "inputs": [
+    "page",
+    "target_queries",
+    "source_policy"
+  ],
+  "steps": [
+    "List target queries and the exact answer each page should provide in the first useful section.",
+    "Check crawlability, indexability, title intent, internal links, schema, freshness, and source support.",
+    "Rewrite the page to answer first, then explain, then show steps or examples.",
+    "Add citations or primary-source links for factual claims and remove unsupported filler.",
+    "Rerun the same query and page checks to verify no high-impact gap remains."
+  ],
+  "checks": [
+    "answer appears early",
+    "sources support factual claims",
+    "title and headings match intent",
+    "internal links help next action",
+    "crawl checks pass"
+  ],
+  "stopConditions": [
+    "priority queries map to answer-ready pages",
+    "source material missing",
+    "budget ends"
+  ],
+  "evidence": [
+    "query map",
+    "before-after page diff",
+    "crawl or lint output",
+    "remaining gaps"
+  ],
+  "humanApproval": [
+    "making legal, medical, or financial claims",
+    "changing brand positioning"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Answer First Page Refresh Loop for [page, target_queries, source_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- List target queries and the exact answer each page should provide in the first useful section.\n- Check crawlability, indexability, title intent, internal links, schema, freshness, and source support.\n- Rewrite the page to answer first, then explain, then show steps or examples.\n- Add citations or primary-source links for factual claims and remove unsupported filler.\n- Rerun the same query and page checks to verify no high-impact gap remains.\n\nQuality gates before completion:\n- answer appears early\n- sources support factual claims\n- title and headings match intent\n- internal links help next action\n- crawl checks pass\n\nStop when one of these is true:\n- priority queries map to answer-ready pages\n- source material missing\n- budget ends\n\nFinish with:\n- query map\n- before-after page diff\n- crawl or lint output\n- remaining gaps\n\nEscalate for human approval before: making legal, medical, or financial claims, changing brand positioning."
+}

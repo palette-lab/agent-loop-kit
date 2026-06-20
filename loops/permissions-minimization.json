@@ -1,0 +1,70 @@
+{
+  "id": "permissions-minimization",
+  "title": "Permissions Minimization Loop",
+  "category": "security",
+  "summary": "Reduces tokens, workflows, apps, and service accounts to the least permissions needed.",
+  "tags": [
+    "security",
+    "least-privilege",
+    "github-actions",
+    "iam"
+  ],
+  "useCases": [
+    "CI hardening",
+    "MCP tool permission review",
+    "service account audit"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "permission_surface",
+    "required_actions",
+    "owner"
+  ],
+  "steps": [
+    "Inventory every permission, token scope, environment secret, and write path in scope.",
+    "Map each permission to a specific required action and mark anything unproven as suspect.",
+    "Reduce one permission at a time, then run the workflows or tasks that require it.",
+    "Add documentation and tests or policy checks that keep the reduced permissions from widening silently.",
+    "Escalate permissions that cannot be justified by a named owner and task."
+  ],
+  "checks": [
+    "permission-to-use mapping exists",
+    "reduced permissions still pass required workflows",
+    "unneeded write scopes removed",
+    "owner recorded"
+  ],
+  "stopConditions": [
+    "all remaining permissions are justified",
+    "workflow breaks and owner accepts current scope",
+    "access change needs admin approval"
+  ],
+  "evidence": [
+    "permission inventory",
+    "before-after scopes",
+    "workflow output",
+    "owner approvals"
+  ],
+  "humanApproval": [
+    "removing production access",
+    "changing organization policy",
+    "granting new write permissions"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Permissions Minimization Loop for [permission_surface, required_actions, owner].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Inventory every permission, token scope, environment secret, and write path in scope.\n- Map each permission to a specific required action and mark anything unproven as suspect.\n- Reduce one permission at a time, then run the workflows or tasks that require it.\n- Add documentation and tests or policy checks that keep the reduced permissions from widening silently.\n- Escalate permissions that cannot be justified by a named owner and task.\n\nQuality gates before completion:\n- permission-to-use mapping exists\n- reduced permissions still pass required workflows\n- unneeded write scopes removed\n- owner recorded\n\nStop when one of these is true:\n- all remaining permissions are justified\n- workflow breaks and owner accepts current scope\n- access change needs admin approval\n\nFinish with:\n- permission inventory\n- before-after scopes\n- workflow output\n- owner approvals\n\nEscalate for human approval before: removing production access, changing organization policy, granting new write permissions."
+}

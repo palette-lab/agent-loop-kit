@@ -1,0 +1,70 @@
+{
+  "id": "browser-automation-proof-loop",
+  "title": "Browser Automation Proof Loop",
+  "category": "evaluation",
+  "summary": "Verifies browser agent tasks through repeatable setup, screenshots, DOM evidence, and side-effect checks.",
+  "tags": [
+    "browser-agent",
+    "qa",
+    "automation"
+  ],
+  "useCases": [
+    "web agents",
+    "end-to-end workflows",
+    "RPA validation"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "web_task",
+    "test_account",
+    "side_effect_policy"
+  ],
+  "steps": [
+    "Define the task, allowed site, test account, forbidden actions, and proof required for completion.",
+    "Start from a known browser state and capture initial evidence.",
+    "Execute one bounded browser action at a time, recording screenshots or DOM evidence for important state changes.",
+    "Before any side effect, verify destination, data, and approval requirement.",
+    "Finish with proof that the intended state changed and no forbidden side effect occurred."
+  ],
+  "checks": [
+    "known initial state",
+    "evidence captured at key steps",
+    "side effects verified before action",
+    "final state proved"
+  ],
+  "stopConditions": [
+    "task proved complete",
+    "approval required for side effect",
+    "site blocks automation",
+    "uncertain destination"
+  ],
+  "evidence": [
+    "initial and final screenshots",
+    "DOM snippets",
+    "action log",
+    "side-effect confirmation"
+  ],
+  "humanApproval": [
+    "purchases",
+    "messages to real users",
+    "irreversible account changes"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Browser Automation Proof Loop for [web_task, test_account, side_effect_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Define the task, allowed site, test account, forbidden actions, and proof required for completion.\n- Start from a known browser state and capture initial evidence.\n- Execute one bounded browser action at a time, recording screenshots or DOM evidence for important state changes.\n- Before any side effect, verify destination, data, and approval requirement.\n- Finish with proof that the intended state changed and no forbidden side effect occurred.\n\nQuality gates before completion:\n- known initial state\n- evidence captured at key steps\n- side effects verified before action\n- final state proved\n\nStop when one of these is true:\n- task proved complete\n- approval required for side effect\n- site blocks automation\n- uncertain destination\n\nFinish with:\n- initial and final screenshots\n- DOM snippets\n- action log\n- side-effect confirmation\n\nEscalate for human approval before: purchases, messages to real users, irreversible account changes."
+}

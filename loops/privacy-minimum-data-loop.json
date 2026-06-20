@@ -1,0 +1,70 @@
+{
+  "id": "privacy-minimum-data-loop",
+  "title": "Privacy Minimum Data Loop",
+  "category": "security",
+  "summary": "Reduces a workflow to the minimum personal or sensitive data needed for the stated purpose.",
+  "tags": [
+    "privacy",
+    "data-minimization",
+    "security"
+  ],
+  "useCases": [
+    "AI workflows",
+    "analytics events",
+    "support tooling"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "workflow",
+    "data_fields",
+    "purpose"
+  ],
+  "steps": [
+    "State the purpose, users, outputs, retention needs, and downstream consumers for the workflow.",
+    "Classify each data field by sensitivity and necessity for the purpose.",
+    "Remove, hash, aggregate, redact, or delay collection for fields that are not strictly needed.",
+    "Test that the workflow still meets its purpose with reduced data.",
+    "Update documentation, retention settings, and access controls to match the minimized design."
+  ],
+  "checks": [
+    "purpose stated",
+    "field necessity justified",
+    "sensitive data minimized",
+    "workflow still works",
+    "retention and access updated"
+  ],
+  "stopConditions": [
+    "minimum viable data set proven",
+    "legal review needed",
+    "business owner accepts residual data need"
+  ],
+  "evidence": [
+    "field inventory",
+    "before-after data flow",
+    "test output",
+    "retention and access notes"
+  ],
+  "humanApproval": [
+    "processing special-category data",
+    "changing retention policy",
+    "sharing data externally"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Privacy Minimum Data Loop for [workflow, data_fields, purpose].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- State the purpose, users, outputs, retention needs, and downstream consumers for the workflow.\n- Classify each data field by sensitivity and necessity for the purpose.\n- Remove, hash, aggregate, redact, or delay collection for fields that are not strictly needed.\n- Test that the workflow still meets its purpose with reduced data.\n- Update documentation, retention settings, and access controls to match the minimized design.\n\nQuality gates before completion:\n- purpose stated\n- field necessity justified\n- sensitive data minimized\n- workflow still works\n- retention and access updated\n\nStop when one of these is true:\n- minimum viable data set proven\n- legal review needed\n- business owner accepts residual data need\n\nFinish with:\n- field inventory\n- before-after data flow\n- test output\n- retention and access notes\n\nEscalate for human approval before: processing special-category data, changing retention policy, sharing data externally."
+}

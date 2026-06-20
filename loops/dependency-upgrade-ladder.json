@@ -1,0 +1,70 @@
+{
+  "id": "dependency-upgrade-ladder",
+  "title": "Dependency Upgrade Ladder Loop",
+  "category": "engineering",
+  "summary": "Upgrades dependencies through safe rungs instead of one large risky jump.",
+  "tags": [
+    "dependencies",
+    "maintenance",
+    "security",
+    "upgrade"
+  ],
+  "useCases": [
+    "framework upgrades",
+    "security advisories",
+    "runtime migrations"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "dependency",
+    "target_version",
+    "compatibility_gates"
+  ],
+  "steps": [
+    "Read release notes and breaking changes for each version interval that matters.",
+    "Define ladder rungs that minimize simultaneous behavior changes.",
+    "Upgrade one rung at a time, run compatibility gates, and commit only green rungs.",
+    "When a rung fails, isolate whether the break comes from API, configuration, runtime, or transitive dependencies.",
+    "Document any migration decisions so future upgrades have a map."
+  ],
+  "checks": [
+    "lockfile changes are explained",
+    "build and tests pass at each accepted rung",
+    "breaking changes are handled deliberately",
+    "rollback path is clear"
+  ],
+  "stopConditions": [
+    "target version reached",
+    "blocked by incompatible dependency or product decision",
+    "budget ends after preserving last green rung"
+  ],
+  "evidence": [
+    "version ladder",
+    "release note links",
+    "test output per rung",
+    "rollback note"
+  ],
+  "humanApproval": [
+    "major runtime version changes",
+    "license changes",
+    "large public API migration"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Dependency Upgrade Ladder Loop for [dependency, target_version, compatibility_gates].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Read release notes and breaking changes for each version interval that matters.\n- Define ladder rungs that minimize simultaneous behavior changes.\n- Upgrade one rung at a time, run compatibility gates, and commit only green rungs.\n- When a rung fails, isolate whether the break comes from API, configuration, runtime, or transitive dependencies.\n- Document any migration decisions so future upgrades have a map.\n\nQuality gates before completion:\n- lockfile changes are explained\n- build and tests pass at each accepted rung\n- breaking changes are handled deliberately\n- rollback path is clear\n\nStop when one of these is true:\n- target version reached\n- blocked by incompatible dependency or product decision\n- budget ends after preserving last green rung\n\nFinish with:\n- version ladder\n- release note links\n- test output per rung\n- rollback note\n\nEscalate for human approval before: major runtime version changes, license changes, large public API migration."
+}

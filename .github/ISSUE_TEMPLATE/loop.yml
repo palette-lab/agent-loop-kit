@@ -1,0 +1,26 @@
+name: Propose a loop
+description: Suggest a new practical agent loop
+title: "Loop: "
+labels: [loop-proposal]
+body:
+  - type: input
+    id: problem
+    attributes:
+      label: Repeated workflow
+      description: What practical repeated workflow should this loop improve?
+    validations:
+      required: true
+  - type: textarea
+    id: loop
+    attributes:
+      label: Draft loop
+      description: Include steps, checks, stop conditions, evidence, and approval gates.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Why it is useful
+      description: Share examples, failure modes, or tasks where this loop helps.
+    validations:
+      required: true

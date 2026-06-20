@@ -1,0 +1,69 @@
+{
+  "id": "scenario-bank-eval",
+  "title": "Scenario Bank Evaluation Loop",
+  "category": "evaluation",
+  "summary": "Builds a realistic scenario bank, freezes success criteria, and iterates until the product passes.",
+  "tags": [
+    "evaluation",
+    "qa",
+    "scenario-testing"
+  ],
+  "useCases": [
+    "AI product evaluation",
+    "workflow QA",
+    "feature acceptance"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "capabilities",
+    "scenario_count",
+    "success_criteria"
+  ],
+  "steps": [
+    "List major capabilities, edge cases, user roles, and failure modes before writing test scenarios.",
+    "Create realistic scenarios and freeze the success criteria, scoring rubric, and test conditions.",
+    "Run every scenario under the same conditions and collect evidence for each outcome.",
+    "Fix only root causes shown by failures, then rerun affected scenarios and the complete bank.",
+    "Do not weaken the criteria mid-run; create a new evaluation revision if criteria must change."
+  ],
+  "checks": [
+    "scenario bank covers capabilities",
+    "rubric frozen before testing",
+    "evidence captured for each outcome",
+    "full rerun passes"
+  ],
+  "stopConditions": [
+    "all scenarios meet the original bar",
+    "criteria revision is required",
+    "budget ends"
+  ],
+  "evidence": [
+    "scenario table",
+    "rubric",
+    "run logs",
+    "fix log",
+    "final pass summary"
+  ],
+  "humanApproval": [
+    "changing success criteria",
+    "shipping with known failed scenarios"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Scenario Bank Evaluation Loop for [capabilities, scenario_count, success_criteria].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- List major capabilities, edge cases, user roles, and failure modes before writing test scenarios.\n- Create realistic scenarios and freeze the success criteria, scoring rubric, and test conditions.\n- Run every scenario under the same conditions and collect evidence for each outcome.\n- Fix only root causes shown by failures, then rerun affected scenarios and the complete bank.\n- Do not weaken the criteria mid-run; create a new evaluation revision if criteria must change.\n\nQuality gates before completion:\n- scenario bank covers capabilities\n- rubric frozen before testing\n- evidence captured for each outcome\n- full rerun passes\n\nStop when one of these is true:\n- all scenarios meet the original bar\n- criteria revision is required\n- budget ends\n\nFinish with:\n- scenario table\n- rubric\n- run logs\n- fix log\n- final pass summary\n\nEscalate for human approval before: changing success criteria, shipping with known failed scenarios."
+}

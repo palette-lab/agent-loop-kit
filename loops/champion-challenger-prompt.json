@@ -1,0 +1,70 @@
+{
+  "id": "champion-challenger-prompt",
+  "title": "Champion Challenger Prompt Loop",
+  "category": "evaluation",
+  "summary": "Improves prompts or policies by promoting challengers only when holdout evidence beats the champion.",
+  "tags": [
+    "prompt-engineering",
+    "evaluation",
+    "holdout"
+  ],
+  "useCases": [
+    "support bot prompts",
+    "agent policies",
+    "classifier instructions"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "champion",
+    "working_set",
+    "holdout_set",
+    "promotion_margin"
+  ],
+  "steps": [
+    "Save the current champion, score, must-pass checks, working set, holdout set, and budget.",
+    "Diagnose one recorded failure and change exactly one meaningful part of the challenger.",
+    "Evaluate on the working set first, then use holdouts only for promotion decisions.",
+    "Promote the challenger only if it beats the champion by the margin without weakening any must-pass check.",
+    "Keep an experiment log so every rejected idea teaches something."
+  ],
+  "checks": [
+    "holdouts remain untouched during design",
+    "one change per round",
+    "must-pass checks preserved",
+    "promotion rule applied"
+  ],
+  "stopConditions": [
+    "target score reached",
+    "no progress for two rounds",
+    "budget ends"
+  ],
+  "evidence": [
+    "champion and challenger versions",
+    "scores",
+    "experiment log",
+    "remaining failures"
+  ],
+  "humanApproval": [
+    "changing holdouts",
+    "changing promotion margin",
+    "shipping prompt to production"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Champion Challenger Prompt Loop for [champion, working_set, holdout_set, promotion_margin].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Save the current champion, score, must-pass checks, working set, holdout set, and budget.\n- Diagnose one recorded failure and change exactly one meaningful part of the challenger.\n- Evaluate on the working set first, then use holdouts only for promotion decisions.\n- Promote the challenger only if it beats the champion by the margin without weakening any must-pass check.\n- Keep an experiment log so every rejected idea teaches something.\n\nQuality gates before completion:\n- holdouts remain untouched during design\n- one change per round\n- must-pass checks preserved\n- promotion rule applied\n\nStop when one of these is true:\n- target score reached\n- no progress for two rounds\n- budget ends\n\nFinish with:\n- champion and challenger versions\n- scores\n- experiment log\n- remaining failures\n\nEscalate for human approval before: changing holdouts, changing promotion margin, shipping prompt to production."
+}

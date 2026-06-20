@@ -1,0 +1,68 @@
+{
+  "id": "runbook-drift-check",
+  "title": "Runbook Drift Check Loop",
+  "category": "operations",
+  "summary": "Verifies that operational runbooks still match current systems, alerts, dashboards, and permissions.",
+  "tags": [
+    "runbook",
+    "ops",
+    "docs"
+  ],
+  "useCases": [
+    "on-call readiness",
+    "post-incident cleanup",
+    "team handoffs"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "runbook_scope",
+    "service",
+    "safe_test_policy"
+  ],
+  "steps": [
+    "Inventory runbook commands, dashboards, alert names, escalation contacts, and required permissions.",
+    "Verify each step in a safe environment or with a read-only check when production action would be risky.",
+    "Update stale commands, screenshots, contact paths, and decision points.",
+    "Add a small periodic check for fragile links or commands where practical.",
+    "Have a non-author follow the updated runbook for one representative path."
+  ],
+  "checks": [
+    "commands verified or marked unsafe",
+    "links and contacts current",
+    "permissions documented",
+    "non-author dry run completed"
+  ],
+  "stopConditions": [
+    "runbook is accurate for scope",
+    "missing access blocks verification",
+    "owner decision needed"
+  ],
+  "evidence": [
+    "runbook inventory",
+    "verification notes",
+    "updated runbook diff",
+    "dry-run result"
+  ],
+  "humanApproval": [
+    "executing production actions",
+    "changing escalation policy"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Runbook Drift Check Loop for [runbook_scope, service, safe_test_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Inventory runbook commands, dashboards, alert names, escalation contacts, and required permissions.\n- Verify each step in a safe environment or with a read-only check when production action would be risky.\n- Update stale commands, screenshots, contact paths, and decision points.\n- Add a small periodic check for fragile links or commands where practical.\n- Have a non-author follow the updated runbook for one representative path.\n\nQuality gates before completion:\n- commands verified or marked unsafe\n- links and contacts current\n- permissions documented\n- non-author dry run completed\n\nStop when one of these is true:\n- runbook is accurate for scope\n- missing access blocks verification\n- owner decision needed\n\nFinish with:\n- runbook inventory\n- verification notes\n- updated runbook diff\n- dry-run result\n\nEscalate for human approval before: executing production actions, changing escalation policy."
+}

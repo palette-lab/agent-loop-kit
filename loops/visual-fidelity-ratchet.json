@@ -1,0 +1,70 @@
+{
+  "id": "visual-fidelity-ratchet",
+  "title": "Visual Fidelity Ratchet Loop",
+  "category": "design",
+  "summary": "Rebuilds a target visual through repeatable screenshots, scoring, and weakest-feature repair.",
+  "tags": [
+    "design",
+    "frontend",
+    "visual-regression"
+  ],
+  "useCases": [
+    "UI reconstruction",
+    "component polish",
+    "marketing page clone for authorized references"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "authorized_reference",
+    "viewports",
+    "quality_threshold"
+  ],
+  "steps": [
+    "Capture authorized reference views at fixed viewport sizes and record layout, typography, spacing, color, motion, and states.",
+    "Build the implementation without scraping private or restricted assets.",
+    "Screenshot the same views after each meaningful change and score against the fixed rubric.",
+    "Fix the weakest high-impact fidelity signal without regressing stronger signals.",
+    "Keep the best version and document remaining differences."
+  ],
+  "checks": [
+    "reference use is authorized",
+    "viewports fixed",
+    "screenshots comparable",
+    "rubric scores improve",
+    "accessibility not worsened"
+  ],
+  "stopConditions": [
+    "threshold reached",
+    "progress stalls for two iterations",
+    "budget ends"
+  ],
+  "evidence": [
+    "reference capture",
+    "implementation screenshots",
+    "score table",
+    "remaining gaps"
+  ],
+  "humanApproval": [
+    "using third-party assets",
+    "publishing clone-like designs"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity",
+    "google-stitch"
+  ],
+  "prompt": "Use the Visual Fidelity Ratchet Loop for [authorized_reference, viewports, quality_threshold].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Capture authorized reference views at fixed viewport sizes and record layout, typography, spacing, color, motion, and states.\n- Build the implementation without scraping private or restricted assets.\n- Screenshot the same views after each meaningful change and score against the fixed rubric.\n- Fix the weakest high-impact fidelity signal without regressing stronger signals.\n- Keep the best version and document remaining differences.\n\nQuality gates before completion:\n- reference use is authorized\n- viewports fixed\n- screenshots comparable\n- rubric scores improve\n- accessibility not worsened\n\nStop when one of these is true:\n- threshold reached\n- progress stalls for two iterations\n- budget ends\n\nFinish with:\n- reference capture\n- implementation screenshots\n- score table\n- remaining gaps\n\nEscalate for human approval before: using third-party assets, publishing clone-like designs."
+}

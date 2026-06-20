@@ -1,0 +1,68 @@
+{
+  "id": "docs-code-sync",
+  "title": "Docs Code Sync Loop",
+  "category": "engineering",
+  "summary": "Keeps documentation aligned with the current implementation by testing examples and claims.",
+  "tags": [
+    "docs",
+    "examples",
+    "maintenance"
+  ],
+  "useCases": [
+    "SDK docs",
+    "API docs",
+    "README updates"
+  ],
+  "riskLevel": "low",
+  "inputs": [
+    "doc_scope",
+    "code_scope",
+    "example_policy"
+  ],
+  "steps": [
+    "Inventory documented commands, API names, config keys, screenshots, and behavioral claims in scope.",
+    "Compare each claim with the current source, tests, and runnable examples.",
+    "Fix stale docs or code comments; do not invent behavior that is not implemented.",
+    "Run every command or example that can be executed safely.",
+    "Add doc tests or example checks where practical so drift is caught earlier."
+  ],
+  "checks": [
+    "commands are current",
+    "examples run or are marked conceptual",
+    "API names match source",
+    "screenshots or outputs are refreshed"
+  ],
+  "stopConditions": [
+    "scope has no known stale claim",
+    "blocked by missing product decision",
+    "budget ends"
+  ],
+  "evidence": [
+    "doc inventory",
+    "changed docs",
+    "example run output",
+    "remaining stale items"
+  ],
+  "humanApproval": [
+    "changing product positioning",
+    "publishing new public guarantees"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Docs Code Sync Loop for [doc_scope, code_scope, example_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Inventory documented commands, API names, config keys, screenshots, and behavioral claims in scope.\n- Compare each claim with the current source, tests, and runnable examples.\n- Fix stale docs or code comments; do not invent behavior that is not implemented.\n- Run every command or example that can be executed safely.\n- Add doc tests or example checks where practical so drift is caught earlier.\n\nQuality gates before completion:\n- commands are current\n- examples run or are marked conceptual\n- API names match source\n- screenshots or outputs are refreshed\n\nStop when one of these is true:\n- scope has no known stale claim\n- blocked by missing product decision\n- budget ends\n\nFinish with:\n- doc inventory\n- changed docs\n- example run output\n- remaining stale items\n\nEscalate for human approval before: changing product positioning, publishing new public guarantees."
+}

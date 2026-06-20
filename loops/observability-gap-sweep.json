@@ -1,0 +1,71 @@
+{
+  "id": "observability-gap-sweep",
+  "title": "Observability Gap Sweep Loop",
+  "category": "engineering",
+  "summary": "Adds useful logs, metrics, and traces for important paths without creating noisy telemetry.",
+  "tags": [
+    "observability",
+    "logging",
+    "metrics",
+    "tracing"
+  ],
+  "useCases": [
+    "production debugging",
+    "incident prevention",
+    "SLO instrumentation"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "service",
+    "critical_paths",
+    "signal_policy"
+  ],
+  "steps": [
+    "List critical user and system paths, then map what evidence exists for success, failure, latency, and ownership.",
+    "Choose the highest-value missing signal and define how it will be queried during an incident.",
+    "Add structured telemetry with stable names, safe fields, and cardinality controls.",
+    "Test that the signal is emitted for success and failure cases without leaking sensitive data.",
+    "Update runbooks or dashboards so the signal is discoverable."
+  ],
+  "checks": [
+    "signal answers an operational question",
+    "sensitive fields excluded",
+    "cardinality is bounded",
+    "tests or local proof exist",
+    "runbook updated"
+  ],
+  "stopConditions": [
+    "critical paths have sufficient actionable signals",
+    "remaining gaps require platform access",
+    "budget ends"
+  ],
+  "evidence": [
+    "path-to-signal matrix",
+    "sample log or metric output",
+    "test output",
+    "dashboard or runbook reference"
+  ],
+  "humanApproval": [
+    "logging customer data",
+    "changing retention policy",
+    "adding high-volume metrics"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Observability Gap Sweep Loop for [service, critical_paths, signal_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- List critical user and system paths, then map what evidence exists for success, failure, latency, and ownership.\n- Choose the highest-value missing signal and define how it will be queried during an incident.\n- Add structured telemetry with stable names, safe fields, and cardinality controls.\n- Test that the signal is emitted for success and failure cases without leaking sensitive data.\n- Update runbooks or dashboards so the signal is discoverable.\n\nQuality gates before completion:\n- signal answers an operational question\n- sensitive fields excluded\n- cardinality is bounded\n- tests or local proof exist\n- runbook updated\n\nStop when one of these is true:\n- critical paths have sufficient actionable signals\n- remaining gaps require platform access\n- budget ends\n\nFinish with:\n- path-to-signal matrix\n- sample log or metric output\n- test output\n- dashboard or runbook reference\n\nEscalate for human approval before: logging customer data, changing retention policy, adding high-volume metrics."
+}

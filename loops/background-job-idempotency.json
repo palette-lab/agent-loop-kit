@@ -1,0 +1,70 @@
+{
+  "id": "background-job-idempotency",
+  "title": "Background Job Idempotency Loop",
+  "category": "engineering",
+  "summary": "Hardens jobs and workflows so retries, duplicates, and partial failures do not corrupt state.",
+  "tags": [
+    "reliability",
+    "jobs",
+    "idempotency"
+  ],
+  "useCases": [
+    "queues",
+    "cron jobs",
+    "webhooks",
+    "payment workflows"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "job",
+    "side_effects",
+    "retry_policy"
+  ],
+  "steps": [
+    "Map every side effect, external call, database write, notification, and checkpoint in the job.",
+    "Define the idempotency key, dedupe window, transaction boundary, and retry behavior for each side effect.",
+    "Create tests for duplicate delivery, partial failure, timeout, and retry after success.",
+    "Patch the job so repeated execution converges to one correct final state.",
+    "Add observability for dedupe hits, retries, and terminal failures."
+  ],
+  "checks": [
+    "side effects mapped",
+    "duplicate tests pass",
+    "partial failures handled",
+    "observability added",
+    "manual recovery documented"
+  ],
+  "stopConditions": [
+    "job is idempotent under tested failures",
+    "external system lacks safe semantics",
+    "risk owner accepts limitation"
+  ],
+  "evidence": [
+    "side-effect map",
+    "failure tests",
+    "implementation diff",
+    "sample telemetry"
+  ],
+  "humanApproval": [
+    "changing payment or billing side effects",
+    "discarding duplicate events"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Background Job Idempotency Loop for [job, side_effects, retry_policy].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Map every side effect, external call, database write, notification, and checkpoint in the job.\n- Define the idempotency key, dedupe window, transaction boundary, and retry behavior for each side effect.\n- Create tests for duplicate delivery, partial failure, timeout, and retry after success.\n- Patch the job so repeated execution converges to one correct final state.\n- Add observability for dedupe hits, retries, and terminal failures.\n\nQuality gates before completion:\n- side effects mapped\n- duplicate tests pass\n- partial failures handled\n- observability added\n- manual recovery documented\n\nStop when one of these is true:\n- job is idempotent under tested failures\n- external system lacks safe semantics\n- risk owner accepts limitation\n\nFinish with:\n- side-effect map\n- failure tests\n- implementation diff\n- sample telemetry\n\nEscalate for human approval before: changing payment or billing side effects, discarding duplicate events."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "ticket-to-pr-proof",
+  "title": "Ticket to PR Proof Loop",
+  "category": "engineering",
+  "summary": "Turns a bug report, issue, or support complaint into the smallest review-ready patch with proof.",
+  "tags": [
+    "bugfix",
+    "pull-request",
+    "regression",
+    "evidence"
+  ],
+  "useCases": [
+    "customer bug fixes",
+    "issue triage",
+    "small feature completion"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "ticket",
+    "repository",
+    "definition_of_done"
+  ],
+  "steps": [
+    "Restate the ticket as observable behavior and identify the smallest representative reproduction environment.",
+    "Attempt to reproduce the failure with exact commands or interaction steps before changing code.",
+    "Prove the likely root cause by tracing the failing path, not by guessing from symptoms.",
+    "Make the smallest credible code change that addresses the cause without bundling unrelated cleanup.",
+    "Add or update regression coverage and rerun the original reproduction plus relevant tests."
+  ],
+  "checks": [
+    "failure reproduced or honestly marked unreproducible",
+    "root cause mapped to changed code",
+    "regression test fails before and passes after",
+    "unrelated files unchanged"
+  ],
+  "stopConditions": [
+    "patch is PR-ready with proof",
+    "two serious reproduction attempts fail",
+    "required product decision or access is blocked"
+  ],
+  "evidence": [
+    "reproduction transcript",
+    "root-cause note",
+    "changed file list",
+    "before-after test output",
+    "PR summary"
+  ],
+  "humanApproval": [
+    "product behavior changes",
+    "data migrations",
+    "security-sensitive changes"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Ticket to PR Proof Loop for [ticket, repository, definition_of_done].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Restate the ticket as observable behavior and identify the smallest representative reproduction environment.\n- Attempt to reproduce the failure with exact commands or interaction steps before changing code.\n- Prove the likely root cause by tracing the failing path, not by guessing from symptoms.\n- Make the smallest credible code change that addresses the cause without bundling unrelated cleanup.\n- Add or update regression coverage and rerun the original reproduction plus relevant tests.\n\nQuality gates before completion:\n- failure reproduced or honestly marked unreproducible\n- root cause mapped to changed code\n- regression test fails before and passes after\n- unrelated files unchanged\n\nStop when one of these is true:\n- patch is PR-ready with proof\n- two serious reproduction attempts fail\n- required product decision or access is blocked\n\nFinish with:\n- reproduction transcript\n- root-cause note\n- changed file list\n- before-after test output\n- PR summary\n\nEscalate for human approval before: product behavior changes, data migrations, security-sensitive changes."
+}

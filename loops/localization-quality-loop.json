@@ -1,0 +1,69 @@
+{
+  "id": "localization-quality-loop",
+  "title": "Localization Quality Loop",
+  "category": "content",
+  "summary": "Improves localized content by checking meaning, layout, variables, tone, and in-product context.",
+  "tags": [
+    "localization",
+    "content",
+    "qa"
+  ],
+  "useCases": [
+    "translated UI",
+    "docs localization",
+    "marketing localization"
+  ],
+  "riskLevel": "medium",
+  "inputs": [
+    "locale",
+    "strings_or_pages",
+    "tone_guide"
+  ],
+  "steps": [
+    "Compare source and localized text for meaning, placeholders, variables, dates, numbers, and cultural assumptions.",
+    "View the localized content in its product or page context at realistic breakpoints.",
+    "Fix mistranslations, truncation, tone mismatch, and unsafe literal translations.",
+    "Have a native or domain reviewer inspect high-impact strings where available.",
+    "Record unresolved terms in a glossary so future work stays consistent."
+  ],
+  "checks": [
+    "variables preserved",
+    "meaning matches source",
+    "layout works",
+    "tone fits locale",
+    "glossary updated"
+  ],
+  "stopConditions": [
+    "localized scope passes",
+    "native review needed",
+    "ambiguous source copy blocks quality"
+  ],
+  "evidence": [
+    "issue list",
+    "screenshots",
+    "string diff",
+    "glossary entries"
+  ],
+  "humanApproval": [
+    "publishing high-risk locale copy",
+    "changing legal text"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Localization Quality Loop for [locale, strings_or_pages, tone_guide].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Compare source and localized text for meaning, placeholders, variables, dates, numbers, and cultural assumptions.\n- View the localized content in its product or page context at realistic breakpoints.\n- Fix mistranslations, truncation, tone mismatch, and unsafe literal translations.\n- Have a native or domain reviewer inspect high-impact strings where available.\n- Record unresolved terms in a glossary so future work stays consistent.\n\nQuality gates before completion:\n- variables preserved\n- meaning matches source\n- layout works\n- tone fits locale\n- glossary updated\n\nStop when one of these is true:\n- localized scope passes\n- native review needed\n- ambiguous source copy blocks quality\n\nFinish with:\n- issue list\n- screenshots\n- string diff\n- glossary entries\n\nEscalate for human approval before: publishing high-risk locale copy, changing legal text."
+}

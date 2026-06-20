@@ -1,0 +1,69 @@
+{
+  "id": "changelog-to-announcement",
+  "title": "Changelog to Announcement Loop",
+  "category": "content",
+  "summary": "Turns shipped changes into user-facing release notes without overstating impact.",
+  "tags": [
+    "changelog",
+    "release-notes",
+    "product-marketing"
+  ],
+  "useCases": [
+    "weekly product updates",
+    "open-source releases",
+    "customer emails"
+  ],
+  "riskLevel": "low",
+  "inputs": [
+    "change_log",
+    "audience",
+    "proof_links"
+  ],
+  "steps": [
+    "Separate shipped user-visible changes from internal work, experiments, and unreleased plans.",
+    "Verify each included change against the product, docs, commits, or release artifacts.",
+    "Group changes by user problem and write what changed, why it matters, and how to try it.",
+    "Remove claims that cannot be verified or that promise future behavior.",
+    "Ask for publishing approval after presenting the draft and source evidence."
+  ],
+  "checks": [
+    "only shipped changes included",
+    "each item verified",
+    "user value clear",
+    "no roadmap promises",
+    "approval requested"
+  ],
+  "stopConditions": [
+    "draft ready for approval",
+    "no meaningful shipped changes exist",
+    "verification missing"
+  ],
+  "evidence": [
+    "included and excluded change list",
+    "source links",
+    "draft announcement"
+  ],
+  "humanApproval": [
+    "publishing",
+    "customer commitments",
+    "pricing or availability claims"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Changelog to Announcement Loop for [change_log, audience, proof_links].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- Separate shipped user-visible changes from internal work, experiments, and unreleased plans.\n- Verify each included change against the product, docs, commits, or release artifacts.\n- Group changes by user problem and write what changed, why it matters, and how to try it.\n- Remove claims that cannot be verified or that promise future behavior.\n- Ask for publishing approval after presenting the draft and source evidence.\n\nQuality gates before completion:\n- only shipped changes included\n- each item verified\n- user value clear\n- no roadmap promises\n- approval requested\n\nStop when one of these is true:\n- draft ready for approval\n- no meaningful shipped changes exist\n- verification missing\n\nFinish with:\n- included and excluded change list\n- source links\n- draft announcement\n\nEscalate for human approval before: publishing, customer commitments, pricing or availability claims."
+}

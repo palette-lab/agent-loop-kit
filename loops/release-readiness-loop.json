@@ -1,0 +1,71 @@
+{
+  "id": "release-readiness-loop",
+  "title": "Release Readiness Loop",
+  "category": "operations",
+  "summary": "Gates a release on stale-work exclusion, risk review, test evidence, and rollback readiness.",
+  "tags": [
+    "release",
+    "ci",
+    "rollback"
+  ],
+  "useCases": [
+    "batch releases",
+    "mobile app release",
+    "library publication"
+  ],
+  "riskLevel": "high",
+  "inputs": [
+    "release_scope",
+    "candidate_changes",
+    "quality_gates"
+  ],
+  "steps": [
+    "List candidate changes and exclude anything stale, unfinished, unreviewed, or outside the release story.",
+    "Map each included change to tests, owner, user impact, and rollback plan.",
+    "Run the release quality gates from a clean candidate artifact or branch.",
+    "Prepare release notes with known risks and monitoring checks.",
+    "Release only when the evidence table is complete and rollback is practical."
+  ],
+  "checks": [
+    "stale changes excluded",
+    "quality gates pass",
+    "rollback plan exists",
+    "release notes accurate",
+    "monitoring defined"
+  ],
+  "stopConditions": [
+    "release is ready with evidence",
+    "critical gate fails",
+    "approval-gated risk remains"
+  ],
+  "evidence": [
+    "candidate list",
+    "gate output",
+    "risk table",
+    "rollback steps",
+    "release notes"
+  ],
+  "humanApproval": [
+    "shipping failed gates",
+    "irreversible migrations",
+    "customer-facing incident risk"
+  ],
+  "version": "0.1.0",
+  "updated": "2026-06-20",
+  "author": "Palette Lab",
+  "license": "MIT",
+  "compatibleAgents": [
+    "codex",
+    "github-copilot",
+    "claude",
+    "claude-code",
+    "cursor",
+    "aider",
+    "goose",
+    "opencode",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-antigravity"
+  ],
+  "prompt": "Use the Release Readiness Loop for [release_scope, candidate_changes, quality_gates].\n\nFirst define the task boundary, success criteria, allowed actions, required evidence, risk level, and budget. Work in bounded iterations. In each iteration:\n- List candidate changes and exclude anything stale, unfinished, unreviewed, or outside the release story.\n- Map each included change to tests, owner, user impact, and rollback plan.\n- Run the release quality gates from a clean candidate artifact or branch.\n- Prepare release notes with known risks and monitoring checks.\n- Release only when the evidence table is complete and rollback is practical.\n\nQuality gates before completion:\n- stale changes excluded\n- quality gates pass\n- rollback plan exists\n- release notes accurate\n- monitoring defined\n\nStop when one of these is true:\n- release is ready with evidence\n- critical gate fails\n- approval-gated risk remains\n\nFinish with:\n- candidate list\n- gate output\n- risk table\n- rollback steps\n- release notes\n\nEscalate for human approval before: shipping failed gates, irreversible migrations, customer-facing incident risk."
+}

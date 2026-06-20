@@ -1,0 +1,55 @@
+{
+  "name": "agent-loop-kit",
+  "version": "0.1.0",
+  "description": "Open, schema-validated loops for AI coding agents, evals, operations, security, content, design, and product work.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Palette Lab maintainers",
+  "homepage": "https://github.com/palette-lab/agent-loop-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palette-lab/agent-loop-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/palette-lab/agent-loop-kit/issues"
+  },
+  "keywords": [
+    "agents",
+    "ai-agents",
+    "prompt-engineering",
+    "coding-agents",
+    "evals",
+    "mcp",
+    "agents-md",
+    "claude-code",
+    "cursor",
+    "gemini-cli",
+    "google-ai-studio",
+    "google-stitch",
+    "open-source"
+  ],
+  "bin": {
+    "agent-loop-kit": "./bin/agent-loop-kit.mjs",
+    "agent-loop-mcp": "./bin/agent-loop-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "loops",
+    "schemas",
+    "docs",
+    "skills/loopwright",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "validate": "node bin/agent-loop-kit.mjs validate",
+    "build:site": "node scripts/build-site.mjs dist",
+    "export:agents": "node bin/agent-loop-kit.mjs export-agents-md --out AGENTS.generated.md",
+    "prepare:release": "npm run validate && npm test && npm run build:site"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
