@@ -32,12 +32,19 @@ test('buildCatalog emits ARD ai-catalog manifest and loop markdown', () => {
   assert.ok(existsSync(join(out, '.well-known', 'ai-catalog.json')));
   assert.ok(existsSync(join(out, 'loops', 'completion-contract.md')));
   assert.ok(existsSync(join(out, 'assets', 'hero-contracts.svg')));
+  assert.ok(existsSync(join(out, 'sitemap.xml')));
+  assert.ok(existsSync(join(out, 'robots.txt')));
+  assert.ok(existsSync(join(out, 'llms.txt')));
+  assert.ok(existsSync(join(out, 'llms-full.txt')));
   const catalog = JSON.parse(readFileSync(join(out, '.well-known', 'ai-catalog.json'), 'utf8'));
   assert.equal(catalog.specVersion, '1.0');
   assert.ok(catalog.entries.some((entry) => entry.identifier.includes(':loop:completion-contract')));
   const html = readFileSync(join(out, 'index.html'), 'utf8');
   assert.match(html, /data-set-lang="ko"/);
   assert.match(html, /증거 없는 에이전트/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(readFileSync(join(out, 'robots.txt'), 'utf8'), /Sitemap:/);
+  assert.match(readFileSync(join(out, 'llms.txt'), 'utf8'), /Agent Loop Kit/);
 });
 
 test('exportInstructions writes target-specific files', () => {
