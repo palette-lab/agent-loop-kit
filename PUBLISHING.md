@@ -26,13 +26,15 @@ git push -u origin main
 
 The `pages.yml` workflow builds `dist/` and deploys it. In repository settings, set Pages source to GitHub Actions.
 
-If the workflow fails with `HttpError: Not Found` during `actions/deploy-pages`, Pages has not been enabled for the repository yet. Open:
+If the workflow fails with `HttpError: Not Found` during `actions/deploy-pages`, Pages has not been enabled for the repository yet. This is a repository setting, not a build error. Open:
 
 ```text
 https://github.com/palette-lab/agent-loop-kit/settings/pages
 ```
 
 Then set Build and deployment -> Source to GitHub Actions and rerun the `pages` workflow.
+
+The workflow uses `actions/upload-pages-artifact` with hidden files enabled so `dist/.well-known/ai-catalog.json` is included in the deployed site.
 
 ## Package the Loopwright skill
 

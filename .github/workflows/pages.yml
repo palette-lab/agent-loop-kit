@@ -22,12 +22,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - uses: actions/configure-pages@v5
       - run: npm run build:site
         env:
           AGENT_LOOP_KIT_PUBLIC_URL: https://palette-lab.github.io/agent-loop-kit
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+          include-hidden-files: true
   deploy:
     environment:
       name: github-pages
@@ -36,4 +38,4 @@ jobs:
     needs: build
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
